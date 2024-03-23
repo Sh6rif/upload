@@ -8,7 +8,7 @@ try:
 except ImportError:
     try:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "PIL"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        from autocorrect import Speller
+        from PIL import Image, ImageDraw, ImageFont
     except subprocess.CalledProcessError:
         print("Failed to install 'PIL' module. Please install it manually using 'pip install PIL'")
         sys.exit(1)
