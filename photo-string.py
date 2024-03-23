@@ -1,7 +1,17 @@
 import sys
+import subprocess
 import io
 import base64
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+try:
+    from PIL import Image, ImageDraw, ImageFont
+except ImportError:
+    try:
+        subprocess.check_call([sys.executable, "-m", "pip", "install", "PIL"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        from autocorrect import Speller
+    except subprocess.CalledProcessError:
+        print("Failed to install 'PIL' module. Please install it manually using 'pip install PIL'")
+        sys.exit(1)
 
 def process_image_with_string(image_path, text_string):
     # Open the image
