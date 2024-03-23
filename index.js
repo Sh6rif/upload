@@ -22,7 +22,7 @@ app.post("/upload", async (req, res) => {
   const imageData = req.body.image.replace(/^data:image\/\w+;base64,/, "");
   try {
     // Write image data to a temporary file
-    const imagePath = path.join(__dirname, "temp_image.jpg");
+    const imagePath = path.join("temp_image.jpg");
     fs.writeFileSync(imagePath, imageData, "base64");
     PythonShell.run(
       "photo-string.py",

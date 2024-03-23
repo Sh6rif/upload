@@ -78,14 +78,15 @@
         const reader = new FileReader();
         reader.onload = async function (event) {
           const imageData = event.target.result;
-          console.log("Request payload size:", imageData.length);
           try {
             const response = await fetch("/upload", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
-              body: JSON.stringify({ image: imageData }),
+              body: JSON.stringify({
+                image: imageData,
+              }),
             });
             const result = await response.json();
             document.getElementById("divImg").innerHTML = `
